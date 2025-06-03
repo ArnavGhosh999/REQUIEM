@@ -1,14 +1,14 @@
 <h1 align="center"> AutoGuardian AI: Dual LLM-SLM Real-Time Anomaly Detection </h1>
 <p align="justify"> Automotive software systems are becoming increasingly complex, with critical safety implications requiring proactive failure prediction. Traditional anomaly detection approaches often lack the real-time processing capabilities and contextual understanding needed for automotive environments. AutoGuardian AI addresses this challenge by implementing a novel dual Large Language Model (LLM) and Small Language Model (SLM) architecture specifically designed for automotive software execution logs. By combining the computational efficiency of SLMs for real-time processing with the deep contextual understanding of LLMs, this system provides sub-second anomaly detection while maintaining high accuracy in identifying potential software failures before they occur. This proactive approach enables preventive maintenance strategies, reduces vehicle downtime, and enhances overall automotive safety through intelligent log analysis. </p>
 
-Key points :
-- **Real-time Processing**: Sub-100ms anomaly detection with continuous monitoring of automotive software execution logs
-- **Dual AI Architecture**: Hybrid LLM-SLM system optimized for both accuracy and computational efficiency
+Key Features:
+- **Real-time Processing**: Achieves sub-100ms anomaly detection with continuous monitoring of automotive software execution logs
+- **Dual AI Architecture**: Hybrid LLM-SLM system optimized for both accuracy and computational efficiency in automotive environments
 - **Proactive Failure Prediction**: Identifies potential failures 1-24 hours before occurrence using advanced pattern recognition
 - **Multi-Dataset Support**: Compatible with HDFS, BGL, OpenStack, OBD-II, and custom automotive log formats
 - **Automotive-Specific**: Tailored algorithms for vehicle software systems with domain-specific anomaly patterns
 
-<h2>📁 File structure</h2>
+<h2>📁 Project Structure</h2>
 <pre>
 AUTOGUARDIAN_AI/
 │── .env                           # Environment variables (API keys, model paths)
@@ -18,9 +18,7 @@ AUTOGUARDIAN_AI/
 │   │── model_config.json         # LLM/SLM model configurations
 │   └── dataset_config.yaml       # Dataset processing configurations
 │── src/
-│   │── __init__.py
 │   │── autoguardian/
-│   │   │── __init__.py
 │   │   │── detector.py           # Main AutoGuardian detector class
 │   │   │── llm_processor.py      # Large Language Model processing
 │   │   │── slm_processor.py      # Small Language Model processing
@@ -46,115 +44,45 @@ AUTOGUARDIAN_AI/
 │   │── train_models.py           # Model training script
 │   │── evaluate_performance.py   # Performance evaluation script
 │   └── deploy_system.py          # System deployment utilities
-│── tests/
-│   │── test_detector.py          # Unit tests for detector functionality
-│   │── test_preprocessing.py     # Tests for data preprocessing
-│   └── test_integration.py       # Integration tests
-│── docs/                         # Documentation and guides
-│── docker/                       # Docker configuration files
 │── main.py                       # Main application entry point
 └── README.md                     # Project documentation
 </pre>
 
-<p align="center"><img src="IMAGES/autoguardian_architecture.png" height="400" width="700"></p>
+<h2>🔧 Core Architecture</h2>
+<p align="justify">AutoGuardian AI employs a sophisticated dual-model approach where the Small Language Model (SLM) handles real-time log stream processing for immediate anomaly detection, while the Large Language Model (LLM) provides deep contextual analysis for complex pattern recognition. The fusion engine combines outputs from both models to make intelligent decisions about anomaly classification and failure prediction.</p>
 
-- **Dual LLM-SLM Architecture**: The system employs a sophisticated dual-model approach where the Small Language Model (SLM) handles real-time log stream processing for immediate anomaly detection, while the Large Language Model (LLM) provides deep contextual analysis for complex pattern recognition. The fusion engine combines outputs from both models to make intelligent decisions about anomaly classification and failure prediction.
+The system architecture consists of three main components:
+- **SLM Real-time Processor**: Handles continuous log ingestion and immediate anomaly flagging
+- **LLM Deep Analyzer**: Performs contextual analysis of flagged anomalies and complex pattern detection
+- **Fusion Engine**: Combines insights from both models for final anomaly classification and prediction
 
-<p align="justify">The AutoGuardian AI architecture leverages the strengths of both model types: SLMs provide fast, efficient processing suitable for real-time automotive environments with strict latency requirements, while LLMs offer superior contextual understanding for identifying subtle anomaly patterns that might indicate impending system failures. This hybrid approach ensures both speed and accuracy in automotive software anomaly detection.</p>
-
-<p align="center"><img src="IMAGES/performance_metrics.png" height="400" width="700"></p>
-
-- **Performance Dashboard**: Real-time monitoring of key performance indicators including detection accuracy (95.7%), processing latency (&lt;100ms), false positive rate (&lt;2.3%), and prediction horizon (1-24 hours). The dashboard provides comprehensive insights into system performance across different automotive log types and operational conditions.
+<h2>🚀 Quick Start</h2>
 
 ```python
 # Initialize AutoGuardian AI System
 from autoguardian import AutoGuardianDetector
 import pandas as pd
 
-# Configuration and setup
+# Basic setup
 detector = AutoGuardianDetector(
     config_path="config/config.yaml",
-    model_type="dual",  # Uses both LLM and SLM
-    automotive_mode=True
+    model_type="dual"
 )
 
-# Load automotive software execution logs
+# Load automotive logs
 logs_df = pd.read_csv("data/automotive_logs.csv")
-detector.preprocess_logs(logs_df)
 
 # Real-time anomaly detection
-anomalies = detector.detect_anomalies(
-    logs_df, 
-    real_time=True,
-    threshold=0.85
-)
+anomalies = detector.detect_anomalies(logs_df, real_time=True)
 
 # Generate failure predictions
-predictions = detector.predict_failures(
-    logs_df, 
-    prediction_horizon="2h",
-    confidence_level=0.90
-)
+predictions = detector.predict_failures(logs_df, prediction_horizon="2h")
 
-# Visualization and reporting
-detector.generate_report(
-    anomalies, 
-    predictions, 
-    output_path="results/anomaly_report.html"
-)
+# Export results
+detector.export_results("results/anomaly_report.json")
 ```
 
-<p align="center"><img src="IMAGES/anomaly_detection_results.png" height="400" width="700"></p>
-
-- **Anomaly Detection Results**: Comprehensive analysis showing detected anomalies over time with severity levels, prediction accuracy, and failure type classification. The system identifies various anomaly patterns including memory leaks, timing violations, communication errors, and resource exhaustion scenarios common in automotive software systems.
-
-<p align="center"><img src="IMAGES/training_metrics.png" height="400" width="600"></p>
-
-- **Training Performance Metrics**: Model training convergence showing loss reduction, accuracy improvement, and validation performance across different automotive log datasets including HDFS, BGL, OpenStack, and custom automotive scenarios.
-
-```python
-# Advanced Configuration Example
-config = {
-    "models": {
-        "llm": {
-            "name": "automotive-bert-large",
-            "max_length": 512,
-            "batch_size": 16
-        },
-        "slm": {
-            "name": "automotive-distilbert",
-            "max_length": 128,
-            "batch_size": 64
-        }
-    },
-    "detection": {
-        "real_time_threshold": 0.1,  # 100ms max latency
-        "anomaly_threshold": 0.85,
-        "prediction_window": "1h"
-    },
-    "automotive_specific": {
-        "log_types": ["ECU", "CAN", "OBD-II", "Diagnostic"],
-        "safety_critical": True,
-        "compliance_mode": "ISO26262"
-    }
-}
-```
-
-<p align="center"><img src="IMAGES/dataset_comparison.png" height="400" width="700"></p>
-
-- **Multi-Dataset Performance**: Comparative analysis of AutoGuardian AI performance across different log datasets, demonstrating consistent high accuracy and low latency across various automotive and system log types. The system shows robust performance with precision scores above 95% across all tested datasets.
-
-<h2>🚗 Automotive-Specific Features</h2>
-
-<p align="justify">AutoGuardian AI includes specialized components designed specifically for automotive software environments:</p>
-
-- **CAN Bus Log Analysis**: Specialized parsing for Controller Area Network communication logs
-- **OBD-II Integration**: Direct integration with On-Board Diagnostics data streams
-- **ECU Monitoring**: Electronic Control Unit software execution log analysis
-- **Safety-Critical Compliance**: ISO 26262 functional safety standard compliance
-- **Real-Time Constraints**: Hard real-time processing guarantees for safety-critical applications
-
-<h2>📊 Performance Benchmarks</h2>
+<h2>📊 Performance Metrics</h2>
 
 | Metric | AutoGuardian AI | Traditional Methods | Improvement |
 |--------|-----------------|-------------------|-------------|
@@ -164,12 +92,16 @@ config = {
 | Prediction Horizon | 1-24h | N/A | New capability |
 | Memory Usage | 512MB | 2GB | 75% reduction |
 
-<h2>🛠️ Installation & Quick Start</h2>
+<h2>⚙️ Installation</h2>
 
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/yourusername/autoguardian-ai.git
 cd autoguardian-ai
+
+# Create virtual environment
+python -m venv autoguardian_env
+source autoguardian_env/bin/activate  # Windows: autoguardian_env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -178,21 +110,66 @@ pip install -r requirements.txt
 python scripts/setup_datasets.py
 
 # Run the system
-python main.py --config config/config.yaml --mode real-time
+python main.py --config config/config.yaml
 ```
 
-<h2>📈 Dataset Support</h2>
+<h2>🎯 Supported Datasets</h2>
 
-AutoGuardian AI supports multiple dataset formats commonly used in automotive and system log analysis:
-
+AutoGuardian AI works with multiple automotive and system log formats:
 - **HDFS Logs**: Hadoop Distributed File System execution logs with labeled anomalies
-- **BGL Logs**: Blue Gene/L supercomputer system logs from Lawrence Livermore National Labs  
+- **BGL Logs**: Blue Gene/L supercomputer system logs from Lawrence Livermore National Labs
 - **OpenStack Logs**: Cloud infrastructure platform logs with various system events
 - **Automotive OBD-II**: On-Board Diagnostics data from vehicle testing scenarios
 - **Custom Automotive**: Synthetic automotive software execution logs with simulated anomalies
 - **NHTSA Data**: Vehicle safety complaint data for pattern analysis and validation
 
-<h2>🎯 Use Cases</h2>
+<h2>🔍 Advanced Configuration</h2>
+
+```python
+# Custom configuration for automotive environments
+config = {
+    "models": {
+        "llm": {
+            "name": "automotive-bert-large",
+            "max_length": 512,
+            "batch_size": 16,
+            "automotive_domain": True
+        },
+        "slm": {
+            "name": "automotive-distilbert",
+            "max_length": 128,
+            "batch_size": 64,
+            "real_time_mode": True
+        }
+    },
+    "detection": {
+        "real_time_threshold": 0.1,
+        "anomaly_threshold": 0.85,
+        "prediction_window": "1h"
+    },
+    "automotive_specific": {
+        "log_types": ["ECU", "CAN", "OBD-II", "Diagnostic"],
+        "safety_critical": True,
+        "compliance_mode": "ISO26262"
+    }
+}
+
+# Initialize with custom config
+detector = AutoGuardianDetector(config=config)
+```
+
+<h2>🚗 Automotive-Specific Features</h2>
+
+<p align="justify">AutoGuardian AI includes specialized components designed specifically for automotive software environments, ensuring compatibility with industry standards and real-world automotive scenarios.</p>
+
+**Key Automotive Capabilities:**
+- **CAN Bus Log Analysis**: Specialized parsing for Controller Area Network communication logs
+- **OBD-II Integration**: Direct integration with On-Board Diagnostics data streams
+- **ECU Monitoring**: Electronic Control Unit software execution log analysis
+- **Safety-Critical Compliance**: ISO 26262 functional safety standard compliance
+- **Real-Time Constraints**: Hard real-time processing guarantees for safety-critical applications
+
+<h2>📈 Use Cases</h2>
 
 - **Predictive Maintenance**: Early warning system for automotive software failures
 - **Quality Assurance**: Automated testing and validation of automotive software systems
@@ -200,29 +177,43 @@ AutoGuardian AI supports multiple dataset formats commonly used in automotive an
 - **Research & Development**: Advanced analytics for automotive software development
 - **Compliance Monitoring**: Continuous compliance checking for safety standards
 
+<h2>🧪 Testing & Validation</h2>
+
+```bash
+# Run comprehensive tests
+python -m pytest tests/ -v
+
+# Performance benchmarking
+python scripts/benchmark_performance.py
+
+# Automotive-specific validation
+python scripts/validate_automotive_compliance.py
+```
+
 <h2>🤝 Contributing</h2>
 
-We welcome contributions from the automotive software and AI communities! Areas where contributions are particularly valuable:
+We welcome contributions from the automotive software and AI communities! Key areas for contribution:
+- New automotive dataset integration
+- Model optimization and performance improvements
+- Real-time processing enhancements
+- Automotive domain expertise and pattern recognition
+- Testing and validation scenarios
 
-- **New Dataset Integration**: Adding support for additional automotive log formats
-- **Model Optimization**: Improving LLM/SLM performance and efficiency
-- **Real-Time Performance**: Enhancing latency and throughput characteristics
-- **Automotive Domain Expertise**: Contributing domain-specific knowledge and patterns
-- **Testing & Validation**: Expanding test coverage and validation scenarios
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-<h2>📚 Research & Publications</h2>
+<h2>⚠️ Important Considerations</h2>
 
-This project is based on cutting-edge research in automotive software anomaly detection. Key research areas include:
+<p align="justify"><strong>Safety Notice</strong>: AutoGuardian AI is designed for research, development, and non-safety-critical applications. While the system provides valuable insights for automotive software analysis, it should not be used as the sole basis for safety-critical decisions without proper validation, testing, and certification according to relevant automotive safety standards.</p>
 
-- Dual model architectures for real-time processing
-- Automotive-specific anomaly pattern recognition
+**Data Privacy**: Ensure compliance with automotive industry data privacy regulations when using real vehicle data.
+
+<h2>📚 Research Foundation</h2>
+
+This project builds upon cutting-edge research in:
+- Dual model architectures for real-time AI processing
+- Automotive software anomaly detection methodologies
+- Large language models for structured log analysis
 - Proactive failure prediction in safety-critical systems
-- Large language models for log analysis
-- Real-time AI in automotive environments
-
-<h2>⚠️ Safety & Compliance</h2>
-
-<p align="justify"><strong>Important</strong>: AutoGuardian AI is designed for research, development, and non-safety-critical applications. While the system provides valuable insights for automotive software analysis, it should not be used as the sole basis for safety-critical decisions without proper validation, testing, and certification according to relevant automotive safety standards (ISO 26262, AUTOSAR, etc.).</p>
 
 <h2>📄 License</h2>
 
@@ -231,6 +222,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <p align="center">
-  <strong>AutoGuardian AI © 2025 | Driving the Future of Automotive Software Safety</strong><br>
-  Made with ❤️ for safer autonomous vehicles
+<strong>AutoGuardian AI - Driving the Future of Automotive Software Safety</strong><br>
+Built with ❤️ for safer autonomous vehicles
 </p>
