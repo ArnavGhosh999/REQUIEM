@@ -20,7 +20,7 @@ AWARE/
 │── SLM.py                    # Small Language Model implementation  
 │── DESIGN.py                 # Main system architecture and fusion logic
 │── requirements.txt          # Python dependencies
-│── config.yaml               # Configuration settings
+│── config.yaml              # Configuration settings
 │── main.py                   # Entry point for AWARE system
 └── README.md                 # Project documentation
 </pre>
