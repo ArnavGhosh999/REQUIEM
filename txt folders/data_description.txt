@@ -1,0 +1,55 @@
+1. CIA_1_Dataset.csv 
+
+- Engine Failure Prediction: Identify patterns and correlations (e.g., air temperature, operational hours) to predict potential engine failures and plan preventative maintenance.
+- Performance Optimization: Analyze conditions like temperature and speed to improve fuel efficiency and engine lifespan.
+- Engine Comparison: Compare performance and efficiency of different engine types under varying conditions.
+- Predictive Modeling: Train machine learning models to forecast failures, optimize maintenance, and enhance overall engine performance.
+
+2. engine_fault_detection_dataset.csv
+
+Dataset Purpose
+- Designed to detect and classify engine faults using signal processing and machine learning.
+- Contains sensor data under normal, minor fault, and critical fault conditions.
+Features
+- 11 independent variables (sensor readings)
+
+1 dependent variable: Engine_Condition (0: Normal, 1: Minor Fault, 2: Critical Fault)
+| **Feature**             | **Description**                                    | **Unit**        | **Range**  |
+| ----------------------- | -------------------------------------------------- | --------------- | ---------- |
+| `Vibration_Amplitude`   | Peak engine vibration amplitude                    | mm/s²           | 0.1 – 10.0 |
+| `RMS_Vibration`         | Root Mean Square of vibration                      | mm/s²           | 0.05 – 5.0 |
+| `Vibration_Frequency`   | Frequency of engine vibration                      | Hz              | 20 – 2000  |
+| `Surface_Temperature`   | Engine surface temperature                         | °C              | 30 – 150   |
+| `Exhaust_Temperature`   | Exhaust gas temperature                            | °C              | 200 – 600  |
+| `Acoustic_dB`           | Acoustic noise level                               | dB              | 60 – 120   |
+| `Acoustic_Frequency`    | Frequency of engine noise                          | Hz              | 100 – 5000 |
+| `Intake_Pressure`       | Intake manifold pressure                           | kPa             | 90 – 120   |
+| `Exhaust_Pressure`      | Exhaust gas pressure                               | kPa             | 80 – 110   |
+| `Frequency_Band_Energy` | Energy in a specific frequency band (STFT-derived) | Arbitrary Units | 0.1 – 1.0  |
+| `Amplitude_Mean`        | Mean signal amplitude over time                    | Arbitrary Units | 0.01 – 0.5 |
+
+
+3. Multiple_Classification_EV_Battery.csv & Simple_Classification_EV_Battery_Faults_Dataset.csv
+Two datasets have been developed based on battery modeling in MATLAB. Both datasets share the same input features:
+o State of Charge (SOC)
+o Temperature
+o Voltage
+
+Each dataset differs in its output label interpretation:
+
+--> Dataset 1: Binary Battery Health Classification
+Purpose: Classify whether the battery is healthy or unhealthy.
+
+Output Label:
+
+0 → Healthy Battery
+1 → Unhealthy Battery
+
+--> Dataset 2: Multi-Class Battery Fault Classification
+Purpose: Identify specific types of battery faults.
+
+Output Label:
+
+0 → Healthy Battery
+1 → Over-Discharge Fault
+2 → Short-Circuit Fault
