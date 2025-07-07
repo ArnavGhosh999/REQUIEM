@@ -29,8 +29,8 @@ Cruzeon/
 
 ```bash
 # Clone and setup
-git clone https://github.com/yourusername/AWARE.git
-cd AWARE
+git clone https://github.com/yourusername/Cruzeon.git
+cd Cruzeon
 
 # Create virtual environment
 python -m venv venv
