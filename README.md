@@ -1,4 +1,4 @@
-<h1 align="center"> AWARE (Automotive Warning and Risk Evaluation) </h1>
+<h1 align="center"> Cruzeon </h1>
 <p align="justify"> Modern automotive software systems generate massive execution logs that contain critical patterns indicating potential failures. Traditional anomaly detection methods struggle with the real-time processing demands and contextual complexity of automotive environments. AWARE addresses this challenge by implementing a dual Large Language Model (LLM) and Small Language Model (SLM) architecture that combines computational efficiency with deep contextual understanding. The system processes automotive software execution logs in real-time, identifying anomalous patterns and predicting potential failures before they occur, enabling proactive maintenance and enhanced vehicle safety. </p>
 
 Key Features:
