@@ -10,7 +10,7 @@ Key Features:
 
 <h2>📁 Project Structure</h2>
 <pre>
-AWARE/
+Cruzeon/
 │── venv/                     # Virtual environment
 │── DATASET/                  # Automotive log datasets
 │   │── raw/                  # Raw log files
