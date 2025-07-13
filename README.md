@@ -34,7 +34,7 @@ REQUIEM implements **five cutting-edge fine-tuning approaches** to achieve **99%
 ```text
 REQUIEM/
 │
-├── dolphin_mistral.py      # QLoRA fine-tuning for Dolphin-Mistral model
+├── dolphin_mistral.py     # QLoRA fine-tuning for Dolphin-Mistral model
 ├── llama_groq.py          # P-tuning v2 enhanced for Llama3-Groq-Tool-Use:8b
 ├── orca.py                # IA3 fine-tuning optimized for Orca2:7b
 ├── marco.py               # BitFit fine-tuning for Marco-O1:7b
@@ -60,9 +60,9 @@ REQUIEM/
 |--------|-------|---------------------|-----------------|---------------------|-----------|----------|
 | **QLoRA** | Dolphin-Mistral | ~95% reduction | 5x faster | ✓ | Quantized Low-Rank | General automotive diagnostics |
 | **P-tuning v2** | Llama3-Groq-Tool-Use:8b | ~90% reduction | 8x faster | ✓ | Virtual Token Tuning | Tool-enhanced log analysis |
-| **IA3** | Orca2:7b | **99%+ reduction** | **10x faster** | ✓✓ | Activation Scaling | Edge deployment & real-time |
+| **IA3** | Orca2:7b | **99%+ reduction** | **10x faster** | ✓ | Activation Scaling | Edge deployment & real-time |
 | **BitFit** | Marco-O1:7b | ~98% reduction | 7x faster | ✓ | Bias-only Training | Memory-constrained systems |
-| **Diff Pruning** | Cogito:8b | ~96% reduction | 9x faster | ✓✓ | Learned Sparse Updates | Precision-critical log parsing |
+| **Diff Pruning** | Cogito:8b | ~96% reduction | 9x faster | ✓ | Learned Sparse Updates | Precision-critical log parsing |
 
 ## 📋 Ollama Model Requirements
 
