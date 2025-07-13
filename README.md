@@ -219,9 +219,9 @@ If you use REQUIEM in your research, please cite our paper:
 ```bibtex
 @article{requiem2024,
   title={Dual LLM-SLM-Based Real-Time Anomaly Detection in Automotive Software Execution Logs for Proactive Failure Prediction},
-  author={[Authors]},
+  author={[Dr. R Srinivasan, Arnav Ghosh, Sayak Das]},
   journal={[Journal]},
-  year={2024},
+  year={2025},
   publisher={[Publisher]}
 }
 ```
@@ -237,8 +237,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Open Source Community**: Ollama, Transformers, Scikit-learn
 - **Academic Partnerships**: Research collaboration and validation
 - **Automotive Industry Partners**: Real-world testing and validation
-
----
 
 <p align="center">
   <strong>⚡ REQUIEM: Pioneering Dual LLM-SLM Automotive Anomaly Detection ⚡</strong>
