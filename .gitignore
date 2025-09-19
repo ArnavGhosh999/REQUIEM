@@ -1,3 +1,4 @@
-/.venv/
-/.vscode/
+/analysis/
 /data/
+/saved/
+/stratified_data/
